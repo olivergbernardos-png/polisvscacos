@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polis vs Cacos | Estrategia Mid-Weight</title>
+    <meta name="description" content="Juego de mesa de estrategia asimétrica. La profundidad del ajedrez con la emoción de una persecución. Disponible en Edición Estándar y Premium.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* PALETA DE COLORES NEÓN */
+        :root {
+            --primary: #00a8ff; /* Azul Neón (Polis) */
+            --accent: #ff6b00;  /* Naranja Fuego (Cacos) */
+            --bg-color: #0a0f16; /* Fondo Ultra Oscuro */
+            --card-bg: #121a26;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Botones con Glow */
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #ff8533;
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 107, 0, 0.6);
+        }
+
+        /* Tarjetas estilo cristal oscuro */
+        .card-shadow {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card-shadow:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px -5px rgba(0, 168, 255, 0.2);
+        }
+
+        .hero-split {
+            background: linear-gradient(105deg, var(--bg-color) 0%, var(--bg-color) 55%, #05080c 55%, #05080c 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-split {
+                background: var(--bg-color);
+            }
+        }
+
+        .text-glow-blue { text-shadow: 0 0 10px rgba(0, 168, 255, 0.5); }
+        .text-glow-orange { text-shadow: 0 0 10px rgba(255, 107, 0, 0.5); }
+    </style>
+</head>
+<body class="antialiased bg-[#0a0f16]">
+
+    <nav class="fixed w-full z-50 bg-[#0a0f16]/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <img src="logo-meeple.png" alt="Logo Polis vs Cacos" class="h-10 w-10 object-contain drop-shadow-[0_0_5px_rgba(255,255,255,0.3)]">
+                    
+                    <span class="text-2xl font-black tracking-tight text-white brand-font uppercase">
+                        <span class="text-[#00a8ff]">Polis</span> <span class="text-[#ff6b00]">vs</span> <span class="text-[#ff6b00]">Cacos</span>
+                    </span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#juego" class="text-gray-300 hover:text-[#00a8ff] transition-colors px-3 py-2 text-sm font-bold uppercase tracking-wide">Juego</a>
+                        <a href="#productos" class="text-gray-300 hover:text-[#ff6b00] transition-colors px-3 py-2 text-sm font-bold uppercase tracking-wide">Productos</a>
+                        <a href="#noticias" class="text-gray-300 hover:text-[#00a8ff] transition-colors px-3 py-2 text-sm font-bold uppercase tracking-wide">Noticias</a>
+                        <a href="#faqs" class="text-gray-300 hover:text-[#ff6b00] transition-colors px-3 py-2 text-sm font-bold uppercase tracking-wide">FAQs</a>
+                        <a href="#nosotros" class="text-gray-300 hover:text-[#00a8ff] transition-colors px-3 py-2 text-sm font-bold uppercase tracking-wide">Nosotros</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="#productos" class="btn-primary py-3 px-6 rounded-lg font-bold text-sm uppercase tracking-wide">
+                        Comprar Ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative min-h-screen flex items-center pt-20 hero-split overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="z-10 order-2 md:order-1">
+                    <div class="inline-block px-3 py-1 mb-4 bg-green-900/30 text-green-400 border border-green-500/30 rounded-full text-xs font-bold uppercase tracking-wider">
+                        En Stock - Envío Inmediato
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+                        LA ESTRATEGIA <br>
+                        <span class="text-[#ff6b00] text-glow-orange">DEFINITIVA.</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 max-w-lg leading-relaxed">
+                        Olvídate del azar puro. Combina la adrenalina de una persecución con la profundidad táctica del ajedrez.
+                        <br><span class="block mt-2 font-bold text-[#00a8ff]">Mid-Weight. Asimétrico. Intenso.</span>
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#productos" class="btn-primary py-4 px-8 rounded-lg font-bold text-lg text-center flex items-center justify-center gap-2">
+                            Ver Ediciones <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#juego" class="bg-transparent border-2 border-[#00a8ff] text-[#00a8ff] hover:bg-[#00a8ff]/10 py-4 px-8 rounded-lg font-bold text-lg text-center transition-all flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(0,168,255,0.3)]">
+                            <i data-lucide="play-circle" class="w-5 h-5"></i> Descubre el Juego
+                        </a>
+                    </div>
+
+                    <div class="mt-12 flex items-center gap-8 text-gray-400 font-bold text-sm uppercase tracking-wider">
+                        <div class="flex items-center gap-2"><i data-lucide="users" class="w-5 h-5 text-[#00a8ff]"></i> 2-6 Jugadores</div>
+                        <div class="flex items-center gap-2"><i data-lucide="clock" class="w-5 h-5 text-[#00a8ff]"></i> 45 Min</div>
+                        <div class="flex items-center gap-2"><i data-lucide="user-plus" class="w-5 h-5 text-[#00a8ff]"></i> +14 Años</div>
+                    </div>
+                </div>
+
+                <div class="relative h-full flex items-center justify-center order-1 md:order-2">
+                    <div class="relative w-full">
+                         <img src="portada-neon.png" alt="Tablero Ciudad Neón" class="w-full h-auto rounded-2xl shadow-2xl border border-white/10 drop-shadow-[0_0_30px_rgba(0,168,255,0.15)]">
+                        
+                        <div class="absolute bottom-6 right-6 bg-[#121a26]/90 backdrop-blur p-4 rounded-xl shadow-lg max-w-xs z-20 border border-white/10">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-3 h-3 rounded-full bg-[#ff6b00] shadow-[0_0_10px_#ff6b00]"></div>
+                                <span class="text-xs font-bold text-gray-400 uppercase">Valoración</span>
+                            </div>
+                            <p class="text-white font-bold text-sm">Top ventas en juegos de estrategia 2024.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="juego">
+        <section class="py-24 bg-[#0a0f16]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">CÓMO SE JUEGA</h2>
+                    <div class="w-20 h-1 bg-[#ff6b00] mx-auto rounded-full mb-6 shadow-[0_0_10px_#ff6b00]"></div>
+                    <p class="text-lg text-gray-300">
+                        La mayoría de juegos te piden tirar un dado y rezar. Nosotros te pedimos que pienses.
+                        Polis vs Cacos llena el vacío entre el "Party Game" y el "Wargame".
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-8 rounded-2xl card-shadow">
+                        <div class="w-14 h-14 bg-[#00a8ff] rounded-xl flex items-center justify-center mb-6 text-white font-bold text-xl shadow-[0_0_15px_rgba(0,168,255,0.4)]">1</div>
+                        <h3 class="text-xl font-bold text-white mb-3">Elige tu Estrategia</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            ¿Prefieres la fuerza bruta del bloqueo policial o la agilidad arriesgada de los ladrones? Cada bando tiene reglas de movimiento únicas.
+                        </p>
+                    </div>
+
+                    <div class="p-8 rounded-2xl card-shadow">
+                        <div class="w-14 h-14 bg-[#ff6b00] rounded-xl flex items-center justify-center mb-6 text-white font-bold text-xl shadow-[0_0_15px_rgba(255,107,0,0.4)]">2</div>
+                        <h3 class="text-xl font-bold text-white mb-3">Gestiona tu Pelotón</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Controlas 4 unidades. En tu turno, debes decidir cuál activar. Mover una pieza puede dejar desprotegida a otra.
+                        </p>
+                    </div>
+
+                    <div class="p-8 rounded-2xl card-shadow">
+                        <div class="w-14 h-14 bg-[#00a8ff] rounded-xl flex items-center justify-center mb-6 text-white font-bold text-xl shadow-[0_0_15px_rgba(0,168,255,0.4)]">3</div>
+                        <h3 class="text-xl font-bold text-white mb-3">Domina el Tablero</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Usa las casillas especiales a tu favor. Empuja a tus rivales a trampas o toma atajos peligrosos para llegar a la zona segura.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#05080c]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <div class="bg-[#121a26] rounded-3xl overflow-hidden shadow-xl border-t-4 border-[#00a8ff] group hover:shadow-[0_0_30px_rgba(0,168,255,0.2)] transition-all">
+                        <div class="p-10">
+                            <div class="flex items-center justify-between mb-8">
+                                <h3 class="text-3xl font-black text-[#00a8ff] text-glow-blue">POLIS</h3>
+                                <i data-lucide="shield" class="w-10 h-10 text-[#00a8ff]"></i>
+                            </div>
+                            <p class="text-lg font-medium text-gray-400 mb-6 italic">"El Martillo: Control y Bloqueo"</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i data-lucide="check-circle" class="w-6 h-6 text-[#00a8ff] flex-shrink-0"></i>
+                                    <span><strong>Lentos pero pesados:</strong> Diseñados para ocupar espacio físico en el tablero.</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i data-lucide="check-circle" class="w-6 h-6 text-[#00a8ff] flex-shrink-0"></i>
+                                    <span><strong>Habilidad de Bloqueo:</strong> Cierran caminos y obligan al rival a retroceder.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-[#00a8ff]/10 p-6 flex justify-center h-52 items-center">
+                             <i data-lucide="lock" class="w-32 h-32 text-[#00a8ff] opacity-80 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(0,168,255,0.5)]"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#121a26] rounded-3xl overflow-hidden shadow-xl border-t-4 border-[#ff6b00] group hover:shadow-[0_0_30px_rgba(255,107,0,0.2)] transition-all">
+                        <div class="p-10">
+                            <div class="flex items-center justify-between mb-8">
+                                <h3 class="text-3xl font-black text-[#ff6b00] text-glow-orange">CACOS</h3>
+                                <i data-lucide="zap" class="w-10 h-10 text-[#ff6b00]"></i>
+                            </div>
+                            <p class="text-lg font-medium text-gray-400 mb-6 italic">"El Bisturí: Evasión y Velocidad"</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i data-lucide="check-circle" class="w-6 h-6 text-[#ff6b00] flex-shrink-0"></i>
+                                    <span><strong>Rápidos y Frágiles:</strong> Letales en recta, eliminados si son capturados.</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-gray-300">
+                                    <i data-lucide="check-circle" class="w-6 h-6 text-[#ff6b00] flex-shrink-0"></i>
+                                    <span><strong>Atajos Arriesgados:</strong> Toman rutas prohibidas que la policía no puede seguir.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-[#ff6b00]/10 p-6 flex justify-center h-52 items-center">
+                            <i data-lucide="wind" class="w-32 h-32 text-[#ff6b00] opacity-80 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(255,107,0,0.5)]"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#0a0f16] text-white relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#00a8ff]/10 via-transparent to-transparent opacity-50 pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-6">Mecánicas Profundas,<br>Reglas Simples.</h2>
+                        <p class="text-gray-300 text-lg mb-8 leading-relaxed">
+                            Polis vs Cacos está diseñado para eliminar la frustración del azar. Aquí, si pierdes, es porque tu rival fue más listo, no porque tuviera mejores dados.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-[#ff6b00] flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(255,107,0,0.4)]">
+                                    <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xl mb-1">Gestión de Recursos</h4>
+                                    <p class="text-gray-400 text-sm">Tus fichas son tus vidas. Gestionarlas es clave.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10">
+                                    <i data-lucide="map" class="w-6 h-6 text-[#00a8ff]"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xl mb-1">Tablero Vivo</h4>
+                                    <p class="text-gray-400 text-sm">Un entorno que cambia y reacciona a tus movimientos.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10">
+                                    <i data-lucide="swords" class="w-6 h-6 text-[#ff6b00]"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xl mb-1">Sacrificio Táctico</h4>
+                                    <p class="text-gray-400 text-sm">Bloquea al rival sacrificando una pieza menor.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex items-center justify-center">
+                         <div class="w-full h-80 flex items-center justify-center border-2 border-[#ff6b00]/50 rounded-2xl bg-[#ff6b00]/5 shadow-[0_0_50px_rgba(255,107,0,0.2)] backdrop-blur-sm">
+                            <i data-lucide="cpu" class="w-48 h-48 text-[#ff6b00] drop-shadow-[0_0_25px_rgba(255,107,0,0.8)]"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section id="productos" class="py-24 bg-[#05080c]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-sm font-bold text-[#ff6b00] uppercase tracking-widest mb-4">La Colección</h3>
+                <h2 class="text-4xl font-black text-white">ELIGE TU EDICIÓN</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-[#121a26] rounded-2xl shadow-xl overflow-hidden border border-white/10 flex flex-col hover:border-[#00a8ff]/50 transition-colors">
+                    <div class="h-64 bg-[#0a0f16] relative">
+                        <img src="producto-estandar.png" alt="Edición Estándar" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#121a26] to-transparent"></div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3 class="text-2xl font-bold text-white">Edición Estándar</h3>
+                        <p class="text-3xl font-black text-[#ff6b00] my-4 text-glow-orange">39,95€</p>
+                        <ul class="space-y-3 mb-8 text-gray-400 flex-1">
+                            <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-[#00a8ff]"></i> Tablero de cartón reforzado</li>
+                            <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-[#00a8ff]"></i> Meeples de madera estándar</li>
+                            <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-[#00a8ff]"></i> Insert de plástico básico</li>
+                        </ul>
+                        <button class="w-full bg-[#1a2230] text-white py-4 rounded-lg font-bold hover:bg-[#252e40] hover:text-[#00a8ff] transition-all border border-white/10 hover:border-[#00a8ff]/50">Añadir al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="bg-[#121a26] rounded-2xl shadow-[0_0_30px_rgba(255,107,0,0.15)] overflow-hidden border-2 border-[#ff6b00] relative flex flex-col">
+                    <div class="absolute top-4 right-4 bg-[#ff6b00] text-white px-4 py-1 rounded-full text-xs font-bold uppercase shadow-[0_0_10px_#ff6b00]">Más Vendido</div>
+                    <div class="h-64 bg-[#0a0f16] relative">
+                         <img src="producto-premium.png" alt="Edición Premium" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300">
+                         <div class="absolute inset-0 bg-gradient-to-t from-[#121a26] to-transparent"></div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col relative overflow-hidden">
+                        <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#ff6b00]/10 rounded-full blur-3xl pointer-events-none"></div>
+                        
+                        <h3 class="text-2xl font-bold text-white">Edición Deluxe (Madera)</h3>
+                        <p class="text-3xl font-black text-[#ff6b00] my-4 text-glow-orange">69,95€</p>
+                        <ul class="space-y-3 mb-8 text-gray-400 flex-1 relative z-10">
+                            <li class="flex gap-2"><i data-lucide="star" class="w-5 h-5 text-[#ff6b00]"></i> <strong>Tablero de madera grabado</strong></li>
+                            <li class="flex gap-2"><i data-lucide="star" class="w-5 h-5 text-[#ff6b00]"></i> Meeples con serigrafía exclusiva</li>
+                            <li class="flex gap-2"><i data-lucide="star" class="w-5 h-5 text-[#ff6b00]"></i> Caja metálica coleccionista</li>
+                            <li class="flex gap-2"><i data-lucide="star" class="w-5 h-5 text-[#ff6b00]"></i> Tapete de neopreno incluido</li>
+                        </ul>
+                        <button class="w-full btn-primary py-4 rounded-lg font-bold transition-colors shadow-lg relative z-10">Comprar Deluxe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="noticias" class="py-24 bg-[#0a0f16] border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12">ÚLTIMAS NOTICIAS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group cursor-pointer">
+                    <div class="h-48 bg-[#121a26] rounded-xl overflow-hidden mb-4 border border-white/5">
+                        <img src="https://images.unsplash.com/photo-1543807535-eceef0bc6599?auto=format&fit=crop&w=800&q=80" alt="Torneo Nacional" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <p class="text-xs font-bold text-[#ff6b00] uppercase mb-2">Eventos</p>
+                    <h3 class="text-xl font-bold text-white group-hover:text-[#ff6b00] transition-colors">Primer Torneo Nacional Polis vs Cacos</h3>
+                    <p class="text-gray-400 text-sm mt-2">La comunidad competitiva se reúne en Madrid para decidir quién es el mejor estratega del país.</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="h-48 bg-[#121a26] rounded-xl overflow-hidden mb-4 border border-white/5">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80" alt="Análisis de estrategia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <p class="text-xs font-bold text-[#00a8ff] uppercase mb-2">Estrategia</p>
+                    <h3 class="text-xl font-bold text-white group-hover:text-[#00a8ff] transition-colors">El Gambito del Caco: ¿Vale la pena sacrificar?</h3>
+                    <p class="text-gray-400 text-sm mt-2">Analizamos las estadísticas de victoria cuando el jugador Caco sacrifica una pieza en los primeros 5 turnos.</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="h-48 bg-[#121a26] rounded-xl overflow-hidden mb-4 border border-white/5">
+                         <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Tendencias de mercado" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100">
+                    </div>
+                    <p class="text-xs font-bold text-[#ff6b00] uppercase mb-2">Industria</p>
+                    <h3 class="text-xl font-bold text-white group-hover:text-[#ff6b00] transition-colors">El auge de los juegos "Mid-Weight" en 2024</h3>
+                    <p class="text-gray-400 text-sm mt-2">Por qué los jugadores están abandonando los juegos de 4 horas por experiencias más intensas y breves.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faqs" class="py-24 bg-[#05080c]">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">PREGUNTAS FRECUENTES</h2>
+            <div class="space-y-4">
+                <div class="bg-[#121a26] p-6 rounded-xl border border-white/10 hover:border-[#00a8ff]/30 transition-colors">
+                    <h4 class="font-bold text-white mb-2">¿Es Polis vs Cacos difícil de aprender?</h4>
+                    <p class="text-gray-400">No. Las reglas se explican en 5 minutos. Sin embargo, dominar las estrategias de bloqueo y sacrificio puede llevarte meses. Es fácil de jugar, difícil de dominar.</p>
+                </div>
+                <div class="bg-[#121a26] p-6 rounded-xl border border-white/10 hover:border-[#ff6b00]/30 transition-colors">
+                    <h4 class="font-bold text-white mb-2">¿Pueden jugar niños?</h4>
+                    <p class="text-gray-400">Recomendamos el juego a partir de 14 años debido a la profundidad estratégica, pero niños de 10-12 años acostumbrados a jugar pueden disfrutarlo perfectamente.</p>
+                </div>
+                <div class="bg-[#121a26] p-6 rounded-xl border border-white/10 hover:border-[#00a8ff]/30 transition-colors">
+                    <h4 class="font-bold text-white mb-2">¿Es dependiente del idioma?</h4>
+                    <p class="text-gray-400">El juego es totalmente independiente del idioma una vez aprendes las reglas, ya que utiliza iconografía clara en el tablero.</p>
+                </div>
+                <div class="bg-[#121a26] p-6 rounded-xl border border-white/10 hover:border-[#ff6b00]/30 transition-colors">
+                    <h4 class="font-bold text-white mb-2">¿Hacéis envíos internacionales?</h4>
+                    <p class="text-gray-400">Sí, realizamos envíos a toda Europa y América. Los costes de envío se calculan en el carrito de compra.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="py-20 bg-[#0a0f16] border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h3 class="text-sm font-bold text-[#ff6b00] uppercase tracking-widest mb-4">Sobre Nosotros</h3>
+            <h2 class="text-3xl font-bold text-white mb-6">PASIÓN POR LA ESTRATEGIA</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-12">
+                Somos un pequeño estudio independiente dedicado a crear juegos que respetan la inteligencia del jugador. Creemos en el "juego limpio", el diseño cuidado y las experiencias cara a cara.
+            </p>
+            
+            <div class="bg-[#121a26] text-white p-8 rounded-2xl max-w-md mx-auto border border-[#00a8ff]/30 shadow-[0_0_20px_rgba(0,168,255,0.1)]">
+                <h4 class="font-bold text-xl mb-2">¿Necesitas ayuda con tu pedido?</h4>
+                <p class="text-gray-400 mb-4">Estamos aquí para resolver cualquier duda.</p>
+                <a href="mailto:soporte.polisvscacos@gmail.com" class="flex items-center justify-center gap-2 text-[#ff6b00] font-bold hover:text-white transition-colors">
+                    <i data-lucide="mail"></i> soporte.polisvscacos@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#05080c] py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <span class="text-xl font-black brand-font uppercase">
+                    <span class="text-[#00a8ff] text-glow-blue">Polis</span> 
+                    <span class="text-[#ff6b00]">vs</span> 
+                    <span class="text-[#ff6b00] text-glow-orange">Cacos</span>
+                </span>
+                <p class="text-gray-500 text-xs mt-2">© 2024 Todos los derechos reservados.</p>
+            </div>
+            <div class="flex space-x-8">
+                <a href="#" class="text-gray-500 hover:text-[#ff6b00] transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                <a href="#" class="text-gray-500 hover:text-[#00a8ff] transition-colors"><i data-lucide="music-2" class="w-6 h-6"></i></a> <a href="#" class="text-gray-500 hover:text-[#ff6b00] transition-colors"><i data-lucide="youtube" class="w-6 h-6"></i></a>
+                <a href="mailto:soporte.polisvscacos@gmail.com" class="text-gray-500 hover:text-[#00a8ff] transition-colors"><i data-lucide="mail" class="w-6 h-6"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const tiktokIcon = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tiktok"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        `;
+        lucide.createIcons();
+    </script>
+</body>
+</html>
